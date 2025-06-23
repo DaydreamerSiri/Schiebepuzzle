@@ -1,9 +1,9 @@
 package model.interfacemodel;
 
 import model.Blocks;
-
 import java.awt.*;
 import java.util.List;
+import java.util.Objects;
 
 public interface block {
 
@@ -14,7 +14,7 @@ public interface block {
         CORRECT(Color.GREEN), WRONG(Color.RED);
         private final Color color;
         PositionalColors(Color color) {
-            this.color = color;
+            this.color = Objects.requireNonNull(color);
         }
 
         public Color getColor(){
@@ -23,19 +23,19 @@ public interface block {
 
     }
 
-    static final int BLOCKAMOUNT = 9 - 1;
-    static final boolean correctPosition = false;
-    static final boolean moveable = false;
+    int BLOCKAMOUNT = 9 - 1; // 3 x 3 grid with 1 Space Free
+    boolean correctPosition = false;
+    boolean moveable = false;
 
 
 
-    public abstract List<Blocks> initBlocks();
+    List<Blocks> initBlocks();
 
-    public abstract Integer getBlockAmount();
+    Integer getBlockAmount();
 
-    public abstract boolean isOnCorrectPosition();
+    boolean isCorrectPosition();
 
-    public abstract boolean isMoveAble();
+    boolean isMoveable();
 
 
 }
