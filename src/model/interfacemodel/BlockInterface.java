@@ -5,10 +5,11 @@ import java.awt.*;
 import java.util.List;
 import java.util.Objects;
 
-public interface block {
+
+public interface BlockInterface {
 
     /**
-     *  CONSTANT ENUM FOR POSITIONAL COLORS
+     *  Color indicators for block position states.
      * */
     enum PositionalColors {
         CORRECT(Color.GREEN), WRONG(Color.RED);
@@ -23,17 +24,17 @@ public interface block {
 
     }
 
-    int BLOCKAMOUNT = 9 - 1; // 3 x 3 grid with 1 Space Free
-    boolean correctPosition = false;
-    boolean moveable = false;
+    int TOTAL_BLOCKS = 8 ; // 3 x 3 grid with 1 Space Free
+    boolean CORRECT_POSITION = false;
+    boolean MOVEABLE = false;
 
 
 
-    List<Blocks> initBlocks();
+    List<Blocks> initalizeBlocks();
 
-    Integer getBlockAmount();
+    Integer getBlockCount();
 
-    boolean isCorrectPosition();
+    boolean isInCorrectPosition();
 
     boolean isMoveable();
 
