@@ -1,8 +1,6 @@
 package model.interfacemodel;
 
-import model.Blocks;
 import java.awt.*;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -24,15 +22,8 @@ public interface BlockInterface {
 
     }
 
-    int TOTAL_BLOCKS = 8 ; // 3 x 3 grid with 1 Space Free
     boolean CORRECT_POSITION = false;
     boolean MOVEABLE = false;
-
-
-
-    List<Blocks> initalizeBlocks();
-
-    Integer getBlockCount();
 
     boolean isInCorrectPosition();
 
