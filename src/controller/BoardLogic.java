@@ -1,6 +1,11 @@
 package controller;
 
 import model.Board;
+import model.Block;
+import view.BoardView;
+
+import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -9,7 +14,6 @@ import model.Board;
 
 public class BoardLogic implements BoardLogicInterface {
     private Board board;
-
 
     /** Constructor Function
      * @param board needs the created Board Model to be used for the Logics
@@ -25,7 +29,6 @@ public class BoardLogic implements BoardLogicInterface {
     public Board getBoard() {
         return this.board;
     }
-
 
     /** calculates and gets the Quadratic Dimension for Column and Row Size of Boards GridSize
      * @return the Column and Row Dimension
@@ -43,5 +46,13 @@ public class BoardLogic implements BoardLogicInterface {
         int side = (int) Math.sqrt(size);
         return side * side == size;
     }
+
+    public void startGame() {
+        Random random = new Random();
+
+    }
+
+
+
 
 }

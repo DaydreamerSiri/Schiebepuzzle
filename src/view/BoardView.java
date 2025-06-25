@@ -1,6 +1,7 @@
 package view;
 
 import controller.BoardLogic;
+import model.Block;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,11 +17,16 @@ public class BoardView extends JFrame {
     private JPanel boardPnl;
     private BoardLogic boardController;
     final private Integer GridDimension;
+    final private Dimension SizeDimension;
+
     public BoardView(BoardLogic controller){
         boardController = controller;
         GridDimension = boardController.getColumnAndRowDimension();
+        SizeDimension = new Dimension(boardController.getBoard().getBoardWidth(),
+                boardController.getBoard().getBoardHeight());
         this.initView();
         this.createBlocksInView();
+        boardController.startGame();
         this.pack();
         this.setVisible(true);
     }
@@ -36,19 +42,18 @@ public class BoardView extends JFrame {
         this.setLayout(layout);
         this.setTitle("Puzzlespiel");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(boardController.getBoard().getBoardWidth(), boardController.getBoard().getBoardHeight()));
+        this.setPreferredSize(SizeDimension);
     }
-
 
     /**
      * Creates the Blocks as Button to be ready presented in View
      *
      * @return List with all Blocks as Button
      */
-    public List createBlocksInView(){
-        List res = boardController.getBoard().initializeBlocks(boardController.getBoard().getBlockCount());
-        for (int i = 0; i < res.size(); i++) {
-            this.add(new Button("Test"));
+    public java.util.List<Block> createBlocksInView(){
+        List<Block> res = boardController.getBoard().initializeBlocks(boardController.getBoard().getBlockCount());
+        for (Block btnBlock : res) {
+            this.add(new BlockButton(btnBlock.getName(), new Dimension(btnBlock.getSizeWidth(), btnBlock.getSizeHeight())));
         }
         return res;
     }

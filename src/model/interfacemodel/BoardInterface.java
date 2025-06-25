@@ -15,4 +15,5 @@ public interface BoardInterface<V> {
     Integer getGridSize();
     Integer getBoardWidth();
     Integer getBoardHeight();
+    List<V> getBlocks();
 }

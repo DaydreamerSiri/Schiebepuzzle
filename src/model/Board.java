@@ -9,17 +9,19 @@ import java.util.List;
 
 
 public class Board<V> implements BoardInterface {
-    private final List<Block> blocks ;
+    private final List<V> blocks ;
 
     public Board() {
-        blocks = initializeBlocks(TOTAL_BLOCKS);
+        blocks = initializeBlocks(GRID_SIZE);
     }
 
     @Override
-    public List<Block> initializeBlocks(int remain) {
+    public List<V> initializeBlocks(int remain) {
         if(remain == 0) return new ArrayList<>();
-        List<Block> blocks = initializeBlocks(--remain);
-        blocks.add(0, new Block(remain, String.valueOf(remain)));
+
+        List<V> blocks = initializeBlocks(--remain);
+        if (remain == 9)  blocks.add(blocks.size(), (V) new Block(remain, null));
+        blocks.add(blocks.size(), (V) new Block(remain, String.valueOf(remain)));
         return blocks;
     }
 
@@ -43,5 +45,8 @@ public class Board<V> implements BoardInterface {
         return HEIGHT;
     }
 
+    public List<V> getBlocks() {
+        return blocks;
+    }
 }
 
