@@ -2,21 +2,42 @@ package controller;
 
 import model.Board;
 
+
+/**
+ * The Overall Logic for the Puzzle Game
+ */
+
 public class BoardLogic implements BoardLogicInterface {
     private Board board;
 
+
+    /** Constructor Function
+     * @param board needs the created Board Model to be used for the Logics
+     */
     public BoardLogic(Board board) {
         this.board = board;
     }
 
+
+    /** Getter Function for Board
+     * @return the Board
+     */
     public Board getBoard() {
         return this.board;
     }
 
-    public int getColumnAndRowSize() {
+
+    /** calculates and gets the Quadratic Dimension for Column and Row Size of Boards GridSize
+     * @return the Column and Row Dimension
+     */
+    public int getColumnAndRowDimension() {
         return isBoardQuadratic() ? (int) Math.sqrt(this.board.getGridSize()) : 0;
     }
 
+
+    /** Check function if the Board has a Quadratic Size (e.g 3x3, 2x2 ... N x N)
+     * @return True if the board is Quadratic or False if not
+     */
     public boolean isBoardQuadratic() {
         int size = this.board.getGridSize();
         int side = (int) Math.sqrt(size);
