@@ -32,5 +32,16 @@ public class Board<V> implements BoardInterface {
     public Integer getGridSize() {
         return GRID_SIZE;
     }
+
+    @Override
+    public Integer getBoardWidth() {
+        return WIDTH;
+    }
+
+    @Override
+    public Integer getBoardHeight() {
+        return HEIGHT;
+    }
+
 }
 

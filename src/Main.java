@@ -1,3 +1,5 @@
+import controller.BoardLogic;
+import model.Board;
 import view.BoardView;
 
 import javax.swing.*;
@@ -10,12 +12,8 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                BoardView gui = new BoardView();
-                JFrame frame = new JFrame();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(gui, BorderLayout.CENTER);
-                frame.pack();
-                frame.setVisible(true);
+                BoardLogic controller = new BoardLogic(new Board());
+                BoardView gui = new BoardView(controller);
             }
         });
     }

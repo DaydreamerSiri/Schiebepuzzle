@@ -6,6 +6,10 @@ import java.util.Objects;
 
 public interface BlockInterface {
 
+    Integer SIZE_WIDTH = 50;
+    Integer SIZE_HEIGHT = 50;
+
+
     /**
      *  Color indicators for block position states.
      * */
