@@ -2,6 +2,8 @@ package model;
 
 import model.interfacemodel.BlockInterface;
 
+import java.awt.*;
+
 public class Block implements BlockInterface {
 
     final protected Integer correctPosition;
@@ -23,9 +25,8 @@ public class Block implements BlockInterface {
         return SIZE_HEIGHT;
     }
 
-    @Override
-    public boolean isInCorrectPosition() {
-        return false;
+    private Color CORRECT_POSITION(boolean b) {
+        return b ? PositionalColors.CORRECT.getColor() : PositionalColors.WRONG.getColor();
     }
 
     @Override

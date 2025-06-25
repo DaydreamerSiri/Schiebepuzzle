@@ -26,7 +26,6 @@ public class BoardView extends JFrame {
                 boardController.getBoard().getBoardHeight());
         this.initView();
         this.createBlocksInView();
-        boardController.startGame();
         this.pack();
         this.setVisible(true);
     }
@@ -50,8 +49,8 @@ public class BoardView extends JFrame {
      *
      * @return List with all Blocks as Button
      */
-    public java.util.List<Block> createBlocksInView(){
-        List<Block> res = boardController.getBoard().initializeBlocks(boardController.getBoard().getBlockCount());
+    public List<Block> createBlocksInView(){
+        List<Block> res = boardController.startGame();
         for (Block btnBlock : res) {
             this.add(new BlockButton(btnBlock.getName(), new Dimension(btnBlock.getSizeWidth(), btnBlock.getSizeHeight())));
         }

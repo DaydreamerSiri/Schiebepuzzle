@@ -1,9 +1,10 @@
 package controller;
 
-import model.Board;
 import model.Block;
-import view.BoardView;
+import model.Board;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -47,9 +48,16 @@ public class BoardLogic implements BoardLogicInterface {
         return side * side == size;
     }
 
-    public void startGame() {
+    public List startGame() {
         Random random = new Random();
 
+        List sortedList = this.board.getBlocks();
+        for (int i = 0; i < this.board.getGridSize(); i++) {
+            int randomNum = random.nextInt(this.board.getGridSize());
+            Collections.swap(sortedList, i, randomNum);
+        }
+
+        return sortedList;
     }
 
 

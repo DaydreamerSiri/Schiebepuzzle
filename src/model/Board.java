@@ -15,13 +15,18 @@ public class Board<V> implements BoardInterface {
         blocks = initializeBlocks(GRID_SIZE);
     }
 
+    public Board(List<V> newGame) {
+        blocks = newGame;
+    }
+
     @Override
     public List<V> initializeBlocks(int remain) {
         if(remain == 0) return new ArrayList<>();
 
         List<V> blocks = initializeBlocks(--remain);
-        if (remain == 9)  blocks.add(blocks.size(), (V) new Block(remain, null));
-        blocks.add(blocks.size(), (V) new Block(remain, String.valueOf(remain)));
+        if (remain == 8) blocks.add(blocks.size(), (V) new Block(remain, null));
+        else blocks.add(blocks.size(), (V) new Block(remain, String.valueOf(remain)));
+
         return blocks;
     }
 
@@ -47,6 +52,11 @@ public class Board<V> implements BoardInterface {
 
     public List<V> getBlocks() {
         return blocks;
+    }
+
+    @Override
+    public void blocksInCorrectPosition() {
+
     }
 }
 

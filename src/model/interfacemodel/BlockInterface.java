@@ -32,8 +32,6 @@ public interface BlockInterface {
     boolean CORRECT_POSITION = false;
     boolean MOVEABLE = false;
 
-    boolean isInCorrectPosition();
-
     boolean isMoveable();
 
 
