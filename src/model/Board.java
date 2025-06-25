@@ -30,11 +30,6 @@ public class Board implements BoardInterface {
     }
 
     @Override
-    public Integer getBlockCount() {
-        return TOTAL_BLOCKS;
-    }
-
-    @Override
     public Integer getGridSize() {
         return GRID_SIZE;
     }

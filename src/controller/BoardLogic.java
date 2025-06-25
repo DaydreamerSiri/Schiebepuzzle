@@ -12,7 +12,7 @@ import java.util.*;
  * The Overall Logic for the Puzzle Game
  */
 
-public class BoardLogic implements BoardLogicInterface {
+public class BoardLogic {
     private Board board;
 
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -56,10 +56,8 @@ public class BoardLogic implements BoardLogicInterface {
     public List<Block> startGame() {
         List<Block> sortedList = this.board.getBlocks();
         do Collections.shuffle(sortedList);
-        while (!isSolveable() && this.getColumnAndRowDimension() % 2 == 1);
-
-        do Collections.shuffle(sortedList);
-        while (isSolveable() && this.getColumnAndRowDimension() % 2 == 0);
+        while ((!isSolveable() && this.getColumnAndRowDimension() % 2 == 1) ||
+                (isSolveable() && this.getColumnAndRowDimension() % 2 == 0));
         return sortedList;
     }
 

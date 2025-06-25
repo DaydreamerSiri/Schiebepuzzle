@@ -11,7 +11,6 @@ public interface BoardInterface<V> {
     int HEIGHT = 720;
 
     List<V> initializeBlocks(int remain);
-    Integer getBlockCount();
     Integer getGridSize();
     Integer getBoardWidth();
     Integer getBoardHeight();

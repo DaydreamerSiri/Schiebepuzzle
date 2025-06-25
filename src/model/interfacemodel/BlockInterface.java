@@ -29,8 +29,4 @@ public interface BlockInterface {
     Integer getSizeWidth();
     Integer getSizeHeight();
 
-    boolean CORRECT_POSITION = false;
-    boolean MOVEABLE = false;
-
-
 }
