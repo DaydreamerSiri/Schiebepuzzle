@@ -16,7 +16,4 @@ public interface BoardInterface<V> {
     Integer getBoardWidth();
     Integer getBoardHeight();
     List<V> getBlocks();
-
-    void blocksInCorrectPosition();
-
 }

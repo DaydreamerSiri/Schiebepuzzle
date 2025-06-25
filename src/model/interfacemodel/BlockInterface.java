@@ -14,7 +14,7 @@ public interface BlockInterface {
      *  Color indicators for block position states.
      * */
     enum PositionalColors {
-        CORRECT(Color.GREEN), WRONG(Color.RED);
+        CORRECT(Color.GREEN), WRONG(Color.WHITE);
         private final Color color;
         PositionalColors(Color color) {
             this.color = Objects.requireNonNull(color);
@@ -31,8 +31,6 @@ public interface BlockInterface {
 
     boolean CORRECT_POSITION = false;
     boolean MOVEABLE = false;
-
-    boolean isMoveable();
 
 
 }

@@ -1,8 +1,10 @@
 package model;
 
+import controller.BoardLogic;
 import model.interfacemodel.BlockInterface;
 
 import java.awt.*;
+import java.util.List;
 
 public class Block implements BlockInterface {
 
@@ -25,13 +27,8 @@ public class Block implements BlockInterface {
         return SIZE_HEIGHT;
     }
 
-    private Color CORRECT_POSITION(boolean b) {
+    public Color CORRECT_POSITION(boolean b) {
         return b ? PositionalColors.CORRECT.getColor() : PositionalColors.WRONG.getColor();
-    }
-
-    @Override
-    public boolean isMoveable() {
-        return false;
     }
 
     public String getName() {

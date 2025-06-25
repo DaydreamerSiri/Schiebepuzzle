@@ -12,8 +12,7 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                BoardLogic controller = new BoardLogic(new Board());
-                BoardView gui = new BoardView(controller);
+                BoardView gui = new BoardView(new BoardLogic(new Board()));
             }
         });
     }

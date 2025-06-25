@@ -1,11 +1,16 @@
 package view;
 
+import controller.BoardLogic;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class BlockButton extends JButton {
     final String name;
-    public BlockButton(String newName, Dimension SizeDimension) {
+    final private BoardLogic boardController;
+
+    public BlockButton(String newName, Dimension SizeDimension, BoardLogic controller) {
+        boardController = controller;
         name = newName;
         this.setText(name);
         this.initButton(SizeDimension);
@@ -23,7 +28,10 @@ public class BlockButton extends JButton {
 
     public void setActionEvent() {
         this.addActionListener( e -> {
-           System.out.println(name);
+            if(boardController.moveBlock(this.name)) {
+                this.repaint();
+                System.out.println(name+"\s has been moved");
+            }
         });
     }
 

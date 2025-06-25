@@ -1,31 +1,30 @@
 package model;
 
-import model.interfacemodel.BlockInterface;
 import model.interfacemodel.BoardInterface;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
-public class Board<V> implements BoardInterface {
-    private final List<V> blocks ;
+public class Board implements BoardInterface {
+    private final List<Block> blocks ;
 
     public Board() {
         blocks = initializeBlocks(GRID_SIZE);
     }
 
-    public Board(List<V> newGame) {
+    public Board(List<Block> newGame) {
         blocks = newGame;
     }
 
     @Override
-    public List<V> initializeBlocks(int remain) {
+    public List<Block> initializeBlocks(int remain) {
         if(remain == 0) return new ArrayList<>();
 
-        List<V> blocks = initializeBlocks(--remain);
-        if (remain == 8) blocks.add(blocks.size(), (V) new Block(remain, null));
-        else blocks.add(blocks.size(), (V) new Block(remain, String.valueOf(remain)));
+        List<Block> blocks = initializeBlocks(--remain);
+        if (remain == 8) blocks.add(blocks.size(), new Block(remain, null));
+        else blocks.add(blocks.size(), new Block(remain, String.valueOf(remain)));
 
         return blocks;
     }
@@ -50,13 +49,23 @@ public class Board<V> implements BoardInterface {
         return HEIGHT;
     }
 
-    public List<V> getBlocks() {
+    public List<Block> getBlocks() {
         return blocks;
     }
 
-    @Override
-    public void blocksInCorrectPosition() {
-
+    public int getEmptyBlockPosition() {
+        for(Block block : blocks) {
+            if (Objects.isNull(block.name)) return blocks.indexOf(block);
+        };
+        return -1;
     }
+
+    public int getBlockPosition(String clickedBlock) {
+        for(Block block : blocks) {
+            if (!Objects.isNull(block.name) && block.name.equals(clickedBlock)) return blocks.indexOf(block);
+        };
+        return -1;
+    }
+
 }
 
