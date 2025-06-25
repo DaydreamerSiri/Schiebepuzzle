@@ -54,14 +54,12 @@ public class BoardLogic implements BoardLogicInterface {
     }
 
     public List<Block> startGame() {
-        Random random = new Random();
-
         List<Block> sortedList = this.board.getBlocks();
-        for (int i = 0; i < this.board.getGridSize(); i++) {
-            int randomNum = random.nextInt(this.board.getGridSize());
-            Collections.swap(sortedList, i, randomNum);
-        }
-        if (isSolveable()) startGame();
+        do Collections.shuffle(sortedList);
+        while (!isSolveable() && this.getColumnAndRowDimension() % 2 == 1);
+
+        do Collections.shuffle(sortedList);
+        while (isSolveable() && this.getColumnAndRowDimension() % 2 == 0);
         return sortedList;
     }
 
@@ -103,7 +101,7 @@ public class BoardLogic implements BoardLogicInterface {
         }
         // For even grid sizes (2x2, 4x4), sum of inversions and empty row must be odd
         else {
-            return (inversions + emptyRow) % 2 == 1;
+            return (inversions + (gridSize - 1 - emptyRow)) % 2 == 1;
         }
     }
 
